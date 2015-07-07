@@ -8,6 +8,7 @@ setcookie("cookies", "this is a cookie name of cookies", time() + 60);
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="clienthint.js"></script>
         <title>HAPPY LEARNING PHP</title>
     </head>
     <body>
@@ -189,8 +190,13 @@ setcookie("cookies", "this is a cookie name of cookies", time() + 60);
         ?>
         
         <?php 
-            echo "<br />------------PHP C--------------<br />";
+            echo "<br />------------PHP AJAX--------------<br />";
         ?>
+        
+        <form>
+            First Name:<input type="text" id="txt1" name="txt1" onkeyup="showHint(this.value)" />
+        </form>
+        <p>Suggestions:<span id="txtHint"></span></p>
         <code><?php //phpinfo();?></code>
     </body>
 </html>
