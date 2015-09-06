@@ -12,9 +12,8 @@ function showHint(str) {
     var url = "gethint.php";
     url = url + "?q=" + str;
     url = url + "&sid=" + Math.random();
-   
-    xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = stateChanged();
+    xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
 }
 
