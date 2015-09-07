@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['views'])) {
+    $_SESSION['views'] = $_SESSION['views'] + 1;
+    if($_SESSION['views'] >= 20)
+        unset($_SESSION['views']);
+}
+else 
+    $_SESSION['views'] = 1;
+?>
 <html>
     <body>
         <h1>多维数组</h1>
@@ -28,7 +38,56 @@
             echo "一个月后:".date("Y-m-d",strtotime("+1 month"))."<br>";     
             echo "十年后:".date("Y-m-d",strtotime("+10 year"))."<br>";    
         ?>
+        <h1>文件</h1>
+        <?php 
+            echo readfile('file.txt');
+        ?>
+        <h1>SESSION</h1>
+        <?php 
+        echo '读取SESSSION:' . $_SESSION['views'];
+        ?>
+        <h1>过滤器</h1>
+        <?php
+        $int = 123;
+        $int_option = array(
+                "options" => array(
+                        "min_range" => 0,
+                        "max_range" => 256
+                    )
+            );
+        if(filter_var($int, FILTER_VALIDATE_INT)){
+            echo '参数int是整型类型<br />';
+            if(!filter_var($int, FILTER_VALIDATE_INT, $int_option)) {
+                echo '参数int在给定范围内<br />';
+            }else {
+                echo '参数int不在给定范围内<br />';
+            }
+        }else {
+            echo '参数int不是整型类型<br />';
+        }
+        
+        $email1 = "1231232@qq.com";
+        $email2 = "@0A:1231232@qq.com";
+        if(filter_var($email1, FILTER_VALIDATE_EMAIL)){
+            echo 'email1是正确格式的邮箱地址<br />';
+        }else {
+            echo 'email1不是正确格式的邮箱地址<br />';
+        }
+        if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
+            echo 'email2是正确格式的邮箱地址<br />';
+        }else {
+            echo 'email2不是正确格式的邮箱地址<br />';
+        }
+        $email22 = filter_var($email2, FILTER_SANITIZE_EMAIL);
+        echo $email22;
+        if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
+            echo 'email2是正确格式的邮箱地址<br />';
+        }else {
+            echo 'email2不是正确格式的邮箱地址<br />';
+        }
+        ?>
+        
         <h1>页脚引用</h1>
-        <?php include 'include_footer.php' ?>
+        <?php include 'include_footer.php'; ?>
     </body>
 </html>
