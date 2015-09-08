@@ -86,6 +86,44 @@ else
             echo 'email2不是正确格式的邮箱地址<br />';
         }
         ?>
+        <h1>XML解析</h1>
+        <?php
+        $parser = xml_parser_create();
+        function start($parser, $element_name, $element_attrs) {
+            switch($element_name) {
+                case "NOTE" :
+                    echo "-- NOTE --<br />";
+                break;
+                case "TO":
+                echo "To: ";
+                break; 
+                case "FROM":
+                echo "From: ";
+                break; 
+                case "HEADING":
+                echo "Heading: ";
+                break; 
+                case "BODY":
+                echo "Message: ";
+            }
+        }
+        function stop($parser, $element_name) {
+            echo "<br />";
+        }
+        function char($parser, $data) {
+            echo $data;
+        }
+        xml_set_element_handler($parser, "start", "stop");
+        xml_set_character_data_handler($parser, "char");
+        $fp = fopen("xml_file.xml", "r");
+        while($data = fread($fp, 4096)) {
+            xml_parse($parser, $data, feof($fp)) or die(sprintf("XML Error: %s at line %d", 
+                    xml_error_string(xml_get_error_code($parser)),
+                    xml_get_current_line_number($parser)
+                ));
+        }
+        xml_parser_free($parser);
+        ?>
         
         <h1>页脚引用</h1>
         <?php include 'include_footer.php'; ?>
