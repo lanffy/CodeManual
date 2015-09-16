@@ -69,21 +69,21 @@ else
         $email1 = "1231232@qq.com";
         $email2 = "@0A:1231232@qq.com";
         if(filter_var($email1, FILTER_VALIDATE_EMAIL)){
-            echo 'email1是正确格式的邮箱地址<br />';
+            echo $email1 . 'email1是正确格式的邮箱地址<br />';
         }else {
-            echo 'email1不是正确格式的邮箱地址<br />';
+            echo $email1 . 'email1不是正确格式的邮箱地址<br />';
         }
         if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
-            echo 'email2是正确格式的邮箱地址<br />';
+            echo $email2 . 'email2是正确格式的邮箱地址<br />';
         }else {
-            echo 'email2不是正确格式的邮箱地址<br />';
+            echo $email2 . 'email2不是正确格式的邮箱地址<br />';
         }
         $email22 = filter_var($email2, FILTER_SANITIZE_EMAIL);
         echo $email22;
         if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
-            echo 'email2是正确格式的邮箱地址<br />';
+            echo $email2 . 'email2是正确格式的邮箱地址<br />';
         }else {
-            echo 'email2不是正确格式的邮箱地址<br />';
+            echo $email2 . 'email2不是正确格式的邮箱地址<br />';
         }
         ?>
         <h1>XML解析</h1>
@@ -124,7 +124,8 @@ else
         }
         xml_parser_free($parser);
         ?>
-        
+        <h1>页面跳转</h1>
+        <a href="a.html">a.html</a>
         <h1>页脚引用</h1>
         <?php include 'include_footer.php'; ?>
     </body>

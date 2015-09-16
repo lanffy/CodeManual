@@ -11,7 +11,7 @@ setcookie("cookies", "this is a cookie name of cookies", time() + 60);
         <script type="text/javascript" src="clienthint.js"></script>
         <title>HAPPY LEARNING PHP</title>
     </head>
-    <body>
+    <body>  
         <?php echo "<p>Hello World</P>" . "\n";?>
         <hr/>
         <?php echo "中文测试...如果有乱码，则添加meta标签即可解决...<br>"; ?>
@@ -119,7 +119,7 @@ setcookie("cookies", "this is a cookie name of cookies", time() + 60);
             echo("now:" . date("Y-m-d h:i:s") . "<br>");
             echo(date("Y-m-d h:i:s", $now) . "<br>");
             echo("onemonthago:" . date("Y-m-d h:i:s", $oneMonthAgo) . "<br>");
-            // echo(getdate("y-m-d"));
+            echo(date("Y-m-d H:i:s", strtotime("-1 day")));
             echo "<hr />";
             echo "php中定义的变量对大小写敏感，定义的其他内容对大小写不敏感，如方法，类等";
             
