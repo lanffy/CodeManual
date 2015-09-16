@@ -126,6 +126,59 @@ else
         ?>
         <h1>页面跳转</h1>
         <a href="a.html">a.html</a>
+        <h1>文件夹便遍历</h1>
+        <?php 
+            function my_scandir($dir){
+                $files=array();
+                if(is_dir($dir)){
+                    if($handle=opendir($dir)){
+                        while(($file=readdir($handle))!==false){
+                            // if($file!="." && $file!=".."){
+                            if(strpos($file, ".") !== 0){
+                                if(is_dir($dir . "/" . $file)){
+                                    $files[]=my_scandir($dir."/".$file);
+                                }else{
+                                    $files[]=$dir."/".$file;
+                                }
+                            }
+                        }
+                        closedir($handle);
+                        return $files;
+                    }
+                }else {
+                    $files[] = $dir;
+                    return $files;
+                }
+            }
+            
+            $files = my_scandir("/home/ubuntu/workspace/phpmanual/");
+            var_dump($files);
+        ?>
+        <?php 
+            echo "<br />同一个html文件内调用php方法：<br />";
+            var_dump(my_scandir("/home/ubuntu/workspace/phpmanual/"));
+            echo "<br />获取url中文件的后缀名称：<br />";
+            $url = "http://www.sina.com.cn/abc/de/fg.php?id=1";
+            $baseName = basename($url);
+            echo $baseName . "<br />";
+            var_dump(parse_url($url));
+            $nodePos = strpos($baseName, ".");
+            $questPos = strpos($baseName, "?");
+            if(strstr($baseName, "?")) {
+                echo "<br /> " . $nodePos . " " . $questPos . " " . substr($baseName, $nodePos + 1, $questPos - $nodePos - 1) . "<br />";
+            }else {
+                echo "<br /> " . $nodePos . " " . $questPos . " " .substr($baseName, $nodePos + 1) . "<br />";
+            }
+        ?>
+        <h1>获取路径后缀的方法</h1>
+        <?php 
+            $path = "dir/upload.image.jpg";
+            echo "<br />方法1：strrchr() :" . strrchr($path, ".") . "<br />";
+            echo "<br />方法2：substr() :" . substr($path, strrpos($path, ".")) . "<br />";
+            echo "<br />方法3：array_pop() :" . array_pop(explode(".", $path)) . "<br />";
+            echo "<br />方法4：pathinfo() :" . pathinfo($path, PATHINFO_EXTENSION) . "<br />";
+            
+        ?>
         <h1>页脚引用</h1>
         <?php include 'include_footer.php'; ?>
     </body>
