@@ -177,7 +177,7 @@ else
             echo "<br />方法2：substr() :" . substr($path, strrpos($path, ".")) . "<br />";
             echo "<br />方法3：array_pop() :" . array_pop(explode(".", $path)) . "<br />";
             echo "<br />方法4：pathinfo() :" . pathinfo($path, PATHINFO_EXTENSION) . "<br />";
-            
+        
         ?>
         <h1>页脚引用</h1>
         <?php include 'include_footer.php'; ?>
