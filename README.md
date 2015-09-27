@@ -28,3 +28,5 @@ The Cloud9 IDE team
 
 Visit http://cloud9.readme.io/v1.0/docs for support, or to learn more about using Cloud9 IDE. 
 To watch some training videos, visit http://www.youtube.com/user/c9ide
+
+
