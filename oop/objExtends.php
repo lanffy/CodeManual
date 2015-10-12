@@ -7,6 +7,10 @@ class foo {
     public function printPHP() {
         echo 'PHP is great.', PHP_EOL;
     }
+
+    public static function printStr($str) {
+        echo 'the input is :', $str, PHP_EOL;
+    }
 }
 
 class bar extends foo {
