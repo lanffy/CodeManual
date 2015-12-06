@@ -8,3 +8,6 @@ $int = $float * 100;
 //$int = intval($int);
 var_dump($int);
 
+
+$str = '6030000';
+var_dump(intval($str));
