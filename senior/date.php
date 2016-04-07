@@ -1,7 +1,9 @@
 <?php
 ini_set('date.timezone','Asia/Shanghai');
 $date1 = date("Y-m-d 10:00:00");
-echo $date1;
+$date11 = date("Ymd");
+echo $date1 . PHP_EOL;
+echo $date11 . PHP_EOL;
 
 $month_begin = date('d') == 1 ? true : false;
 $date2 = $month_begin ? date($value, strtotime("-1 months" . date($value, time()))) : date($value);
