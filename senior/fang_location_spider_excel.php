@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * 爬取搜房网的区域板块坐标,爬取网址:http://esf.fang.com/map/  http://esf.sh.fang.com/map/
+ *
+ */
+
+
 /** Error reporting */
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);

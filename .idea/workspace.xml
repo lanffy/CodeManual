@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee580b6d-2bc2-4b4d-a00f-37adb4ad6099" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/senior/lianjia_location_spider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/senior/lianjia_location_spider_excel.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/senior/location_spider.php" afterPath="$PROJECT_DIR$/senior/fang_location_spider.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/senior/location_spider_excel.php" afterPath="$PROJECT_DIR$/senior/fang_location_spider_excel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/senior/location_spider_excel.php" afterPath="$PROJECT_DIR$/senior/location_spider_excel.php" />
     </list>
     <ignored path="phpmanual.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,32 +28,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="excel_tools.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/senior/excel_tools.php">
+      <file leaf-file-name="lianjia_location_spider_excel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/senior/lianjia_location_spider_excel.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding />
+              <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+              <folding>
+                <element signature="e#6#145#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="location_spider_excel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/senior/location_spider_excel.php">
+      <file leaf-file-name="lianjia_location_spider.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/senior/lianjia_location_spider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="465">
+              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+              <folding>
+                <element signature="e#6#189#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,6 +66,10 @@
         <option value="$PROJECT_DIR$/senior/location_spider.php" />
         <option value="$PROJECT_DIR$/senior/location_spider_excel.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/senior/lianjia_location_spider_excel.php" />
+        <option value="$PROJECT_DIR$/senior/fang_location_spider.php" />
+        <option value="$PROJECT_DIR$/senior/fang_location_spider_excel.php" />
+        <option value="$PROJECT_DIR$/senior/lianjia_location_spider.php" />
       </list>
     </option>
   </component>
@@ -158,11 +158,22 @@
     <property name="settings.editor.selected.configurable" value="copyright.filetypes.PHP" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.location_spider_excel.php">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/senior" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.lianjia_location_spider_excel.php">
     <configuration default="false" name="excel_tools.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/phpmanual/senior/excel_tools.php">
       <method />
     </configuration>
-    <configuration default="false" name="location_spider_excel.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/phpmanual/senior/location_spider_excel.php">
+    <configuration default="false" name="fang_location_spider_excel.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/phpmanual/senior/fang_location_spider_excel.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="lianjia_location_spider_excel.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/phpmanual/senior/lianjia_location_spider_excel.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="lianjia_location_spider.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/phpmanual/senior/lianjia_location_spider.php">
       <method />
     </configuration>
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
@@ -200,14 +211,18 @@
       <envs />
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.excel_tools.php" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.location_spider_excel.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.fang_location_spider_excel.php" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.lianjia_location_spider_excel.php" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.lianjia_location_spider.php" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.location_spider_excel.php" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.excel_tools.php" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.lianjia_location_spider_excel.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.lianjia_location_spider.php" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.fang_location_spider_excel.php" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.excel_tools.php" />
       </list>
     </recent_temporary>
   </component>
@@ -224,12 +239,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1460464252983</updated>
-      <workItem from="1460464254269" duration="6090000" />
+      <workItem from="1460464254269" duration="10672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6090000" />
+    <option name="totallyTimeSpent" value="10672000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="0" width="1276" height="800" extended-state="6" />
@@ -295,10 +310,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/senior/location_spider.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+        <state relative-caret-position="15">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -311,19 +326,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/senior/location_spider_excel.php">
+    <entry file="file://$PROJECT_DIR$/senior/fang_location_spider_excel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#92#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/senior/fang_location_spider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-          <folding />
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senior/lianjia_location_spider_excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+          <folding>
+            <element signature="e#6#145#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senior/lianjia_location_spider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding>
+            <element signature="e#6#189#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
