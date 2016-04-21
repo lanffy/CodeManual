@@ -44,7 +44,7 @@ require_once '../Classes/PHPExcel/IOFactory.php';
 echo date('H:i:s') , " Write to CSV format" , EOL;
 $callStartTime = microtime(true);
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV')->setDelimiter(',')
+$objWriter = PHPExcel_IOFactory::createWriter($fang_objPHPExcel, 'CSV')->setDelimiter(',')
                                                                   ->setEnclosure('"')
                                                                   ->setLineEnding("\r\n")
                                                                   ->setSheetIndex(0)

@@ -44,7 +44,7 @@ require_once dirname(__FILE__) . '/../Classes/PHPExcel/IOFactory.php';
 echo date('H:i:s') , " Write to HTML format" , EOL;
 $callStartTime = microtime(true);
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'HTML');
+$objWriter = PHPExcel_IOFactory::createWriter($fang_objPHPExcel, 'HTML');
 $objWriter->setSheetIndex(0);
 //$objWriter->setImagesRoot('http://www.example.com');
 $objWriter->save(str_replace('.php', '.htm', __FILE__));

@@ -16,17 +16,17 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 date_default_timezone_set('Asia/Shanghai');
 
-if (PHP_SAPI == 'cli')
-    die('This example should only be run from a Web Browser');
+//if (PHP_SAPI == 'cli')
+//    die('This example should only be run from a Web Browser');
 
 /** Include PHPExcel */
-require_once '../PHPExcel/Classes/PHPExcel.php';
+require_once dirname(__FILE__) . '/../PHPExcel/Classes/PHPExcel.php';
 
 // Create new PHPExcel object
-$objPHPExcel = new PHPExcel();
+$fang_objPHPExcel = new PHPExcel();
 
 // Set document properties
-$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
+$fang_objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
     ->setLastModifiedBy("Maarten Balliauw")
     ->setTitle("Office 2007 XLSX Test Document")
     ->setSubject("Office 2007 XLSX Test Document")
@@ -34,41 +34,88 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
     ->setKeywords("office 2007 openxml php")
     ->setCategory("Test result file");
 
-$fang['beijing']['head'] = 'http://esf.fang.com/map/?mapmode=y&district=';
+/********import PHPExcel end*************/
 
-$fang['beijing']['body'] = '&subwayline=&subwaystation=&price=&room=&area=&towards=&floor=&hage=&equipment=&keyword=&comarea=&orderby=30&isyouhui=&x1=115.47808&y1=39.617216&x2=116.857877&y2=40.241322&newCode=&houseNum=&a=ajaxSearch&city=bj&searchtype=&zoom=12&PageNo=1';
+$all_citys = [
+    'bj' => '北京',
+    'sh' => '上海',
+    'sz' => '深圳',
+    'cd' => '成都',
+    'gz' => '广州',
+    'suzhou' => '苏州',
+    'cq' => '重庆',
+    'wuhan' => '武汉',
+    'tj' => '天津',
+    'nanjing' => '南京',
+    'hf' => '合肥',
+    'hz' => '杭州',
+    'zz' => '郑州',
+    'sjz' => '石家庄',
+    'xm' => '厦门',
+    'cs' => '长沙',
+    'xian' => '西安',
+    'qd' => '青岛',
+    'dl' => '大连',
+    'fz' => '福州',
+    'fs' => '佛山',
+    'wuxi' => '无锡',
+    'hrb' => '哈尔滨',
+    'jn' => '济南',
+    'ks' => '昆山',
+    'dg' => '东莞',
+    'km' => '昆明',
+    'sy' => '沈阳',
+    'zh' => '珠海',
+    'nc' => '南昌',
+    'changchun' => '长春',
+    'huizhou' => '惠州',
+    'nn' => '南宁',
+    'taiyuan' => '太原',
+];
 
-$fang['shanghai']['head'] = 'http://esf.sh.fang.com/map/?mapmode=y&district=';
+$url_head = 'http://esf.fang.com/map/?a=getDistArea&city=';
 
-$fang['shanghai']['body'] = '&subwayline=&subwaystation=&price=&room=&area=&towards=&floor=&hage=&equipment=&keyword=&comarea=&orderby=30&isyouhui=&x1=120.570334&y1=30.900277&x2=121.950131&y2=31.59675&newCode=&houseNum=&a=ajaxSearch&city=sh&searchtype=&zoom=12&PageNo=1';
+$fang_all_locations = [];
+$file_name = "fang_location.xlsx";
 
-$all_locations = [];
-//$file_name = "shanghai_fang.xlsx";
-$file_name = "beijing_fang.xlsx";
-echolog(['搜房网', '经度', '纬度', '对方ID']);
-//get_by_city('上海', $fang['shanghai']);
-get_by_city('北京', $fang['beijing']);
-echolog();
+generateFile();
 
+$objWriter = PHPExcel_IOFactory::createWriter($fang_objPHPExcel, 'Excel2007');
+$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 
-function get_by_city($city_name, $city_url_slipts)
+function generateFile()
 {
-    $city_url = $city_url_slipts['head'] . $city_url_slipts['body'];
-    $content = get_gbk_content($city_url);
-    $district_ids = [];
-    echolog($city_name);
-    foreach ($content as $item) {
-        echolog($item);
-        $district_ids[$item->projname] = $item->id;
+    global $fang_all_locations, $all_citys, $fang_objPHPExcel, $url_head;
+    $sheet_count = 0;
+    foreach ($all_citys as $city_pinyin => $name) {
+        $fang_all_locations = [];
+        $fang_objPHPExcel->createSheet($sheet_count);
+        $fang_objPHPExcel->setActiveSheetIndex($sheet_count);
+        $fang_objPHPExcel->getActiveSheet()->setTitle($name);
+        $url = $url_head . $city_pinyin;
+        echolog(['搜房网', '经度', '纬度', '对方ID']);
+        get_by_city($name, $url);
+        echo 'parser done' . $name . PHP_EOL;
+        //填充表格信息
+        $fang_objPHPExcel->getActiveSheet()->fromArray($fang_all_locations);
+        $sheet_count++;
     }
-    echolog();
 
-    foreach ($district_ids as $name => $district_id) {
-        $url = $city_url_slipts['head'] . $district_id . $city_url_slipts['body'];
-        echolog($name);
-        $district_content = get_gbk_content($url);
-        foreach ($district_content as $item) {
-            echolog($item);
+}
+
+function get_by_city($city_name, $url)
+{
+    $districts = get_gbk_content($url);
+    echolog($city_name);
+    foreach ($districts as $district) {
+        $blocks = $district->area;
+        unset($district->area);
+        echolog($district->name);
+        echolog($district);
+        echolog();
+
+        foreach ($blocks as $block) {
+            echolog($block);
         }
         echolog();
     }
@@ -79,59 +126,57 @@ function get_gbk_content($url)
     $content = file_get_contents($url); //获取文件内容
     $content = gzdecode($content); //解压
     $content = json_decode($content); //转义,获取loupan数据
-    $content = mb_convert_encoding($content->loupan, 'utf-8', 'gbk'); //转码
-    $content = json_decode($content);
-    return $content->hit;
+    return $content;
 }
 
 function echolog($item = '')
 {
-    global $all_locations;
+    global $fang_all_locations;
     if (empty($item)) {
-        $all_locations[] = [];
+        $fang_all_locations[] = [];
         return;
     }
     if (is_string($item)) {
-        $all_locations[] = [$item];
+        $fang_all_locations[] = [$item];
         return;
     }
     if (is_array($item)) {
-        $all_locations[] = $item;
+        $fang_all_locations[] = $item;
         return;
     }
-    $item_array[] = $item->projname;
+    $item_array[] = $item->name;
     $item_array[] = $item->x;
     $item_array[] = $item->y;
-    $item_array[] = !empty($item->id) ? @$item->id : @$item->newcode;
-    $all_locations[] = $item_array;
+    $item_array[] = !empty($item->id) ? @$item->id : '无法获取ID';
+    $fang_all_locations[] = $item_array;
 }
 
-$letter = array('A', 'B', 'C', 'D', 'E', 'F', 'F', 'G');
-
-//填充表格信息
-for ($i = 1; $i <= count($all_locations); $i++) {
-    $j = 0;
-    $data = $all_locations[$i - 1];
-    foreach ($data as $item) {
-        $objPHPExcel->getActiveSheet()->setCellValue("$letter[$j]$i", $item);
-        $j++;
-    }
-}
+//$letter = array('A', 'B', 'C', 'D', 'E', 'F', 'F', 'G');
+//
+////填充表格信息
+//for ($i = 1; $i <= count($fang_all_locations); $i++) {
+//    $j = 0;
+//    $data = $fang_all_locations[$i - 1];
+//    foreach ($data as $item) {
+//        $objPHPExcel->getActiveSheet()->setCellValue("$letter[$j]$i", $item);
+//        $j++;
+//    }
+//}
 
 
 // Redirect output to a client’s web browser (Excel2007)
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="' . $file_name . '"');
-header('Cache-Control: max-age=0');
+//header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+//header('Content-Disposition: attachment;filename="' . $file_name . '"');
+//header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
-header('Cache-Control: max-age=1');
+//header('Cache-Control: max-age=1');
 
 // If you're serving to IE over SSL, then the following may be needed
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
-header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
-header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-header('Pragma: public'); // HTTP/1.0
+//header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+//header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+//header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+//header('Pragma: public'); // HTTP/1.0
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-$objWriter->save('php://output');
+//$objWriter = PHPExcel_IOFactory::createWriter($fang_objPHPExcel, 'Excel2007');
+//$objWriter->save('php://output');
 exit;

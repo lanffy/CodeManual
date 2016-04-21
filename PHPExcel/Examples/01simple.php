@@ -80,6 +80,20 @@ $objPHPExcel->getActiveSheet()->setTitle('Simple');
 $objPHPExcel->setActiveSheetIndex(0);
 
 
+$objPHPExcel->createSheet(1);
+$objPHPExcel->setActiveSheetIndex(1)
+    ->setCellValue('A1', 'Hello')
+    ->setCellValue('B2', 'world!')
+    ->setCellValue('C1', 'Hello')
+    ->setCellValue('D2', 'world!');
+
+// Miscellaneous glyphs, UTF-8
+$objPHPExcel->setActiveSheetIndex(1)
+    ->setCellValue('A4', 'Miscellaneous glyphs')
+    ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+$objPHPExcel->getActiveSheet()->setTitle('sheet 2');
+
+
 // Save Excel 2007 file
 echo date('H:i:s') , " Write to Excel2007 format" , EOL;
 $callStartTime = microtime(true);
