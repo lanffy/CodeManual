@@ -32,7 +32,7 @@
     $a[]="Vicky";
     
     //get the q parameter from url
-    $q = $_GET("q");
+    $q = $_GET['q'];
     //lookup all hint from array if length of q > 0
     // if(strlen($q) > 0) {
     //     $hint = "";
@@ -54,4 +54,3 @@
     }
     console.log($response);
     echo $response;
-?>
