@@ -1,4 +1,5 @@
 <?php
+
 /**
  * <pre>
  * User: raoliang
@@ -7,18 +8,22 @@
  * Desc:
  * </pre>
  */
-
-interface A {
+interface A
+{
     const my_static = 'A';
+
     public function getInstance();
+
     public function getSelf();
 }
 
-interface B extends A{
+interface B extends A
+{
 
 }
 
-class C implements B {
+class C implements B
+{
 
     public function getInstance()
     {
@@ -33,3 +38,50 @@ class C implements B {
 
 $c = new C();
 var_dump(C::my_static);
+
+
+trait Log
+{
+    public function parameterCheck($parameters)
+    {
+        echo __METHOD__ . ' parameter check' . $parameters . PHP_EOL;
+    }
+
+    public function startLog()
+    {
+        echo __METHOD__ . ' public function' . PHP_EOL;
+    }
+}
+
+trait Check
+{
+    public function parameterCheck($parameters)
+    {
+        echo __METHOD__ . ' parameter check' . $parameters . PHP_EOL;
+    }
+
+    public function startLog()
+    {
+        echo __METHOD__ . ' public function' . PHP_EOL;
+    }
+}
+
+class Publish
+{
+    use Check, Log {
+        Check::parameterCheck insteadof Log;
+        Log::startLog insteadof Check;
+        Check::startLog as csl;
+    }
+
+    public function doPublish()
+    {
+        $this->startLog();
+        $this->parameterCheck('params');
+        $this->csl();
+    }
+}
+
+$publish = new Publish();
+$publish->doPublish();
+
