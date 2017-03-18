@@ -27,7 +27,22 @@ function __my_auto_load($class_name)
     }
 }
 
+function auto_load2()
+{
+
+}
+
 spl_autoload_register('__my_auto_load');
+spl_autoload_register('auto_load2');
+
+$classLoaders = spl_autoload_functions();
+var_dump($classLoaders);
+echo PHP_EOL;
+foreach ($classLoaders as $classLoader) {
+    echo $classLoader . PHP_EOL;
+}
+exit;
+
 $a = new AutoLoad('Lanffy', 18);
 var_dump($a);
 echo $a;
