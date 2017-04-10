@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/4/13
  * Time: 下午1:27
- * Email: liangrao@anjuke.com
  * Desc: 爬取搜房网的区域板块坐标,爬取网址:http://esf.fang.com/map/  http://esf.sh.fang.com/map/
  * </pre>
  */

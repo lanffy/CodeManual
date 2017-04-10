@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/2/6
  * Time: 下午12:55
- * Email: liangrao@anjuke.com
  * Desc: 激光炮类
  */
 require_once 'abstract/Unit.php';

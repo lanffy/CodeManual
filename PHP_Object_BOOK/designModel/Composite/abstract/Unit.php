@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/2/6
  * Time: 下午12:52
- * Email: liangrao@anjuke.com
  * Desc:
  */
 abstract class Unit{

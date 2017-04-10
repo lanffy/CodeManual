@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/4/14
  * Time: 下午4:21
- * Email: liangrao@anjuke.com
  * Desc:
  * </pre>
  */

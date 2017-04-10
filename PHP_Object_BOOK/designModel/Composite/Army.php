@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/2/6
  * Time: 下午12:58
- * Email: liangrao@anjuke.com
  * Desc:
  */
 require_once 'abstract/Unit.php';

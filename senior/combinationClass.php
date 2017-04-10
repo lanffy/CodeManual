@@ -6,7 +6,6 @@
  * User: rlanffy
  * Date: 16/4/22
  * Time: 下午4:59
- * Email: liangrao@anjuke.com
  * Desc: 数组排列组合
  * </pre>
  */

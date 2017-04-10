@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/4/13
  * Time: 下午1:27
- * Email: liangrao@anjuke.com
  * Desc: 爬取链家,北京的区域板块坐标: http://bj.lianjia.com/ditu/
  * </pre>
  */

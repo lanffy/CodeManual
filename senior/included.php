@@ -1,7 +1,6 @@
 <?php
 /**
  * <pre>
- * User: raoliang
  * Date: 16/9/15
  * Time: 14:18
  * Desc: 被包含的文件

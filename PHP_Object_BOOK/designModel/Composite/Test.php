@@ -5,7 +5,6 @@
  * User: rlanffy
  * Date: 16/2/9
  * Time: 下午6:05
- * Email: liangrao@anjuke.com
  * Desc:
  */
 require_once 'Army.php';

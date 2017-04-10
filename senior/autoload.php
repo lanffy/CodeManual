@@ -1,7 +1,6 @@
 <?php
 /**
  * <pre>
- * User: raoliang
  * Date: 16/9/15
  * Time: 15:05
  * Desc:
