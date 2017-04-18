@@ -1,0 +1,6 @@
+{
+	"require":{
+		"apache/thrift":"0.9.*",
+		"phpoffice/phpexcel": "1.8.1"
+	}
+}
