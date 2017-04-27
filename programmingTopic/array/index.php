@@ -15,7 +15,6 @@ foreach ($cellBrokers as $value) {
     $cellBrokersWithId[$value['brokerid']] = $value;
 }
 
-// 算出得分
 $scores = [];
 $orderedBrokerList = [];
 array_walk(
@@ -37,12 +36,11 @@ array_walk(
     }
 );
 
-$topBrokerIndex = BROKER_COUNT - (COMPANY_COUNT - 1);  //这里先取8个,避免不满3家经纪公司时array_pop
-array_multisort($scores, SORT_DESC, $orderedBrokerList); // 按照得分降序排序
+$topBrokerIndex = BROKER_COUNT - (COMPANY_COUNT - 1);
+array_multisort($scores, SORT_DESC, $orderedBrokerList);
 unset($scores);
 $topBrokers = array_slice($orderedBrokerList, 0, $topBrokerIndex);
 
-// 统计出现的经纪公司
 $companies = [];
 array_walk($topBrokers, function ($brokerInfo) use (&$companies) {
     if (!in_array($brokerInfo['company'], $companies)) $companies[] = $brokerInfo['company'];
@@ -55,24 +53,20 @@ function array_insert(&$array, $position, $insert_array)
 }
 
 if (count($companies) >= COMPANY_COUNT) {
-    // 如果满足3家经纪公司,取满10个经纪人
     $topBrokers = array_merge($topBrokers, array_slice($orderedBrokerList, 8, 2));
 } else {
-    // 不满3家经纪公司,则取到3家为止
     while (count($companies) < COMPANY_COUNT) {
-        if ($topBrokerIndex >= 40) // 只考虑前40个经纪人
+        if ($topBrokerIndex >= 40)
             break;
         $brokerInfo = $orderedBrokerList[$topBrokerIndex++];
         if (!in_array($brokerInfo['company'], $companies)) {
             $companies[] = $brokerInfo['company'];
-            // 随机混排至6-10名之间
             $randomIndex = random_int(5, 9);
             array_insert($topBrokers, $randomIndex, [$brokerInfo]);
         }
     }
 }
 
-// 计算匹配度
 $stars = [];
 $scores = [];
 $maxScore = ceil($topBrokers[0]['score'] / 0.99);
@@ -84,7 +78,6 @@ array_walk($topBrokers, function (&$brokerInfo) use ($maxScore, &$stars, &$score
     $stars[] = $star;
     $scores[] = $brokerInfo['score'];
 });
-// 前面进行了随机混排,可能乱序了,同时随机的匹配度可能不是顺排的,这里按照得分和匹配度降序排列
 array_multisort($scores, SORT_DESC, $stars, SORT_DESC, $orderedBrokerList);
 
 var_dump($topBrokers);
