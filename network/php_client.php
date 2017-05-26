@@ -1,16 +1,10 @@
 <?php
-$socket = fsockopen('127.0.0.1', 8088, $errno, $err_str, 1);
-if(!$socket) {
-    echo $err_str . ';code:' . $errno . PHP_EOL;
-    exit;
-}
-socket_set_blocking($socket, false);
-fwrite($socket, 'client write data to server...\r\n');
-while(!feof($socket)) {
-    echo fread($socket, 1024);
-    flush();
-    ob_flush();
-    usleep(500);
-}
-fclose($socket);
+$client = curl_init();
 
+curl_setopt($client, CURLOPT_URL, '127.0.0.1:8088?p=1&q=2');
+//curl_setopt($client, CURLOPT_PORT,8088);
+curl_setopt($client, CURLOPT_RETURNTRANSFER,1);
+curl_setopt($client, CURLOPT_HEADER,1);
+$r = curl_exec($client);
+curl_close($client);
+var_dump($r);
