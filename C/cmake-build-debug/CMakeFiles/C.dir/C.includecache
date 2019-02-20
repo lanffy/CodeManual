@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rlanffy/Documents/githubPro/phpmanual/C/library.c
+library.h
+/Users/rlanffy/Documents/githubPro/phpmanual/C/library.h
+stdio.h
+-
+
+/Users/rlanffy/Documents/githubPro/phpmanual/C/library.h
+
