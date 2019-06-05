@@ -151,3 +151,92 @@ class Square: Shape {
 var square = Square(sideLength: 1.1, numberOfSide: 4, name: "square 1")
 print(square.toString())
 print(square.perimeter)
+
+enum Rank: Int {
+    case ace = 1
+    case two, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king
+    
+    func simpleDescriotion() -> String {
+        switch self {
+        case .ace:
+            return "ace"
+        case .jack:
+            return "queen"
+        case .king:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+}
+let ace = Rank.ace
+let aceV = ace.rawValue
+var aceCase = ace.simpleDescriotion()
+print(ace)
+print(aceV)
+print(aceCase)
+
+protocol ExampleProtocol {
+    var simpleDescription: String { get }
+    mutating func adjust()
+}
+
+class SimpleClass: ExampleProtocol {
+    var simpleDescription: String = "A very simple class"
+    var anotherProperty: Int = 69105
+    func adjust() {
+        simpleDescription += " Now 100% adjusted"
+    }
+}
+var aC = SimpleClass()
+aC.adjust()
+let aD = aC.simpleDescription
+
+
+struct SimpleStructure: ExampleProtocol {
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust() {
+        simpleDescription += " (adjusted)"
+    }
+}
+var bS = SimpleStructure()
+bS.adjust()
+let bD = bS.simpleDescription
+
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result = [Item]()
+    for _ in 0..<numberOfTimes {
+        result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 5)
+
+let hexadecimalDouble = 0xC.3p0
+let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+
+var optionalTypeName: Int? = 1
+if let constantName = optionalTypeName {
+    print("true \(constantName)")
+} else {
+    print("false")
+}
+
+let age = 3
+assert(age >= 0, "age must bigger than 0")
+let quotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.\
+
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
+print(quotation)
+
+var stringArray: [String] = ["aa", "bb", "cc", "aa"]
+var stringSet: Set<String> = ["aa", "bb", "cc", "aa"]
+print(stringArray)
+print(stringSet)
