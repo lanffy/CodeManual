@@ -40,3 +40,10 @@ if b == nil
 {
     print("b value is : \(a)")
 }
+
+
+str = "Hello, world"
+for c in str
+{
+    print("\(c)")
+}
