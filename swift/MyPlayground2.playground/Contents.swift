@@ -240,3 +240,44 @@ var stringArray: [String] = ["aa", "bb", "cc", "aa"]
 var stringSet: Set<String> = ["aa", "bb", "cc", "aa"]
 print(stringArray)
 print(stringSet)
+
+
+// loop for
+for i in 1...10
+{
+    print(i)
+}
+for j in 1..<10
+{
+    print(j)
+}
+str = "Hello, iMooc!"
+for c in str{
+    print(c)
+}
+stringArray = ["aa", "bb"]
+for item in stringArray{
+    print(item)
+}
+for (index,item) in stringArray.enumerated() {
+    print("\(index):\(item)")
+}
+for (index, item) in dictionary {
+    print("\(index):\(item)")
+}
+
+// while loop
+var whileI = 1
+while whileI < 5
+{
+    print(whileI)
+    whileI += 1
+}
+
+repeat
+{
+    print(whileI)
+    whileI -= 1
+} while whileI > 1
+
+
