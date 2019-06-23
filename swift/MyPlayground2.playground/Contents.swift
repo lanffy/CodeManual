@@ -281,3 +281,11 @@ repeat
 } while whileI > 1
 
 
+func sayHello(userName nickname:String, greetingWord greeting:String) -> String
+{
+    let str = "\(nickname),\(greeting)!"
+    print(str)
+    return str
+}
+
+sayHello(userName: "lanffy", greetingWord: "hello")
