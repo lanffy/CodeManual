@@ -289,3 +289,29 @@ func sayHello(userName nickname:String, greetingWord greeting:String) -> String
 }
 
 sayHello(userName: "lanffy", greetingWord: "hello")
+
+if #available(iOS 10, macOS 10.12, *) {
+    print("mac OS 10.12 or later")
+} else {
+    print("mac OS less than 10.12")
+}
+
+func sayHello(userName nickname:String) -> String
+{
+    let str = "\(nickname) greeting!"
+    print(str)
+    return str
+}
+sayHello(userName: "lanffy")
+
+func swap(a: inout Int, b: inout Int) {
+    let temp = a
+    a = b
+    b = temp
+}
+a = 1
+b = 2
+swap(&a, &b)
+print("a:\(a);b:\(b)")
+
+
