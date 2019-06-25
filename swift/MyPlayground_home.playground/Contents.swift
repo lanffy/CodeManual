@@ -32,15 +32,9 @@ var a:Int
 
 a = 1
 
-var b:Int?
+var b:Int
 
-b = nil
-
-if b == nil
-{
-    print("b value is : \(a)")
-}
-
+b = 1
 
 str = "Hello, world"
 for c in str
@@ -51,7 +45,7 @@ for c in str
 str = "Hello, playground"
 print("Hello, world!")
 
-print("a+b=\(a+b!)")
+print("a+b=\(a+b)")
 
 var stringList = ["apple", "orange", "banana"]
 print(stringList[0])
