@@ -281,14 +281,60 @@ repeat
 } while whileI > 1
 
 
-func sayHello(userName nickname:String, greetingWord greeting:String) -> String
+func sayHello(userName nickname:String, greeting:String = "Hello") -> String
 {
     let str = "\(nickname),\(greeting)!"
     print(str)
     return str
 }
 
-sayHello(userName: "lanffy", greetingWord: "hello")
+sayHello(userName: "lanffy", greeting: "hello")
+sayHello(userName: "lanffy")
+
+func add(a:Int, b:Int, others:Int ...) -> Int
+{
+    var result = a + b
+    for number in others
+    {
+        result += number
+    }
+    print(result)
+    return result
+}
+
+add(a:1, b:2, others:3,4)
+
+func toBinary(b:Int) -> String
+{
+    var result:String = ""
+    var a = b
+    while a != 0
+    {
+        result = String(a % 2) + result
+        a /= 2
+    }
+    print(result)
+    return result
+}
+
+toBinary(b: 6)
+
+let anotherAdd:(Int, Int, Int ...) -> Int = add
+
+anotherAdd(1,2,3)
+
+stringArray = ["a", "b","c","d","abcd","abc","bdc","cd","d","dd"]
+
+func compare(s1:String, s2:String) -> Bool
+{
+    if strlen(s1) == strlen(s2)
+    {
+        return s1 < s2
+    }
+    return strlen(s1) < strlen(s2)
+}
+
+print(stringArray.sorted(by: compare(s1:s2:)))
 
 if #available(iOS 10, macOS 10.12, *) {
     print("mac OS 10.12 or later")
@@ -339,3 +385,4 @@ default:
 for direction in CompassPoint.allCases {
     print(direction)
 }
+
