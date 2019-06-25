@@ -315,3 +315,27 @@ swap(&a, &b)
 print("a:\(a);b:\(b)")
 
 
+enum CompassPoint: CaseIterable {
+    case north
+    case south
+    case east
+    case west
+    case middle
+}
+
+var directionToHead = CompassPoint.south
+
+switch directionToHead {
+case .east:
+    print("east")
+case .north:
+    print("north")
+case .south, .west:
+    print("south or west")
+default:
+    print("error")
+}
+
+for direction in CompassPoint.allCases {
+    print(direction)
+}
