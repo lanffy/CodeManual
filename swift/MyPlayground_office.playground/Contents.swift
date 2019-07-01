@@ -386,3 +386,39 @@ for direction in CompassPoint.allCases {
     print(direction)
 }
 
+class A {
+    var name: String = ""
+    var age: Int = 0
+}
+
+var instanceA1 = A()
+instanceA1.name = "lanffy"
+instanceA1.age = 18
+var instanceA2 = instanceA1
+instanceA2.name = "lanffy2"
+instanceA2.age = 19
+print("instanceA1:name:\(instanceA1.name);age:\(instanceA1.age);;;instanceA2:name:\(instanceA2.name);age:\(instanceA2.age)")
+
+let instanceA3 = A()
+instanceA3.name = "lanffy3"
+instanceA3.age = 20
+let instanceA4 = instanceA3
+instanceA4.name = "lanffy4"
+instanceA4.age = 21
+print("instanceA3:name:\(instanceA3.name);age:\(instanceA3.age);;;instanceA4:name:\(instanceA4.name);age:\(instanceA4.age)")
+
+struct B {
+    var name: String
+    let age: Int
+}
+
+var instanB1 = B(name: "lanffy", age: 18)
+print("instanB1:name:\(instanB1.name);age:\(instanB1.age)")
+instanB1.name="lanffy2"
+//instanB1.age = 19  age是常量，不能修改
+print("instanB1:name:\(instanB1.name);age:\(instanB1.age)")
+
+let instanB2 = B(name: "lanffy3", age: 20)
+print("instanB2:name:\(instanB2.name);age:\(instanB2.age)")
+//instanB2.name = "lanffy4"  instanceB2使用let修饰，代表常量，b其属性不可e更改
+//instanB2.age = 21
