@@ -422,3 +422,5 @@ let instanB2 = B(name: "lanffy3", age: 20)
 print("instanB2:name:\(instanB2.name);age:\(instanB2.age)")
 //instanB2.name = "lanffy4"  instanceB2使用let修饰，代表常量，b其属性不可e更改
 //instanB2.age = 21
+
+
