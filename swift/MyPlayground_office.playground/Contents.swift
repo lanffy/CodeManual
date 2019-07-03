@@ -423,4 +423,69 @@ print("instanB2:name:\(instanB2.name);age:\(instanB2.age)")
 //instanB2.name = "lanffy4"  instanceB2使用let修饰，代表常量，b其属性不可e更改
 //instanB2.age = 21
 
+class DataImporter {
+    var fileName = "data.txt"
+}
 
+class DataManager {
+    lazy var importer = DataImporter()
+    var data = [String]()
+    var b: [String] = []
+}
+
+let manager = DataManager()
+manager.data.append("data1")
+manager.data.append("data2")
+manager.b.append("data3")
+manager.b.append("data4")
+print(manager.importer.fileName)
+
+a = 1
+class PropertyObserve {
+    var para: Int = a {
+        willSet(para) {
+            print("will set para to \(para)")
+        }
+        
+        didSet {
+            if para > oldValue {
+                print("setted para bigger than old value.new value:\(para);oldValue:\(oldValue)")
+            }
+        }
+    }
+}
+let po = PropertyObserve()
+po.para = 10
+po.para = 5
+po.para = 6
+
+struct SubscriptMode {
+    let multi: Int
+    subscript(index: Int) -> Int {
+        return multi * index
+    }
+}
+let sbm = SubscriptMode(multi: 3)
+sbm[6]
+
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        var res = "\(numberOfWheels) wheels"
+        print(res)
+        return res
+    }
+}
+
+class Bicycle: Vehicle {
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
+let bicycle = Bicycle()
+bicycle.description
+
+class Food {
+    
+}
