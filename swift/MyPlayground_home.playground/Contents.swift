@@ -427,9 +427,14 @@ for direction in CompassPoint.allCases {
 }
 
 struct Location {
-    let latitude: Double
+    var latitude: Double
     let longitude: Double
 }
 
-let appLocation: Location = Location(latitude: 37.3230, longitude: -122.0322)
+var appLocation: Location = Location(latitude: 37.3230, longitude: -122.0322)
 print(appLocation)
+print(appLocation.latitude, appLocation.longitude)
+
+appLocation.latitude = 0
+print(appLocation.latitude, appLocation.longitude)
+
