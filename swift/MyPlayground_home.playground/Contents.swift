@@ -427,8 +427,27 @@ for direction in CompassPoint.allCases {
 }
 
 struct Location {
-    var latitude: Double
-    let longitude: Double
+    var latitude: Double = 0
+    var longitude: Double = 0
+}
+
+struct Location2 {
+    var latitude: Double = 0
+    var longitude: Double = 0
+    
+    init(coordinateString: String) {
+        let coordinateArr = coordinateString.split(separator: ",")
+        
+        let first = coordinateArr[0]
+        let second = coordinateArr[1]
+        latitude = Double(first)!
+        longitude = Double(second)!
+    }
+    
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 var appLocation: Location = Location(latitude: 37.3230, longitude: -122.0322)
@@ -438,3 +457,8 @@ print(appLocation.latitude, appLocation.longitude)
 appLocation.latitude = 0
 print(appLocation.latitude, appLocation.longitude)
 
+var home: Location2 = Location2(coordinateString: "1,2")
+print(home)
+
+var com: Location2 = Location2(latitude: 1.1, longitude: 2.2)
+print(com)
