@@ -471,7 +471,7 @@ sbm[6]
 class Vehicle {
     var numberOfWheels = 0
     var description: String {
-        var res = "\(numberOfWheels) wheels"
+        let res = "\(numberOfWheels) wheels"
         print(res)
         return res
     }
@@ -487,5 +487,62 @@ let bicycle = Bicycle()
 bicycle.description
 
 class Food {
+    static var total = 10000
+    static func distribute(num: Int) -> Int {
+        let m = min(num, total)
+        total -= m
+        return m
+    }
     
+    static func receive(num: Int) {
+        total += num
+    }
+}
+
+class People {
+    var total: Int
+    init(num: Int) {
+        total = Food.distribute(num: num)
+    }
+    
+    func win(num: Int) {
+        total += Food.distribute(num: num)
+    }
+    
+    deinit {
+        Food.receive(num: total)
+    }
+}
+var p1: People? = People(num: 100)
+print(p1!.total, Food.total)
+
+p1!.win(num: 200)
+
+print(p1!.total, Food.total)
+p1 = nil
+
+
+print(Food.total)
+
+class Residence {
+    var numberOfRooms = 1
+}
+
+class Person {
+    var residence: Residence?
+}
+let john = Person()
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) rooms")
+} else {
+    print("Unable to retrieve the number of rooms")
+}
+
+john.residence = Residence()
+
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) rooms")
+} else {
+    print("Unable to retrieve the number of rooms")
 }
