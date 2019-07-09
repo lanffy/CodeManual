@@ -546,3 +546,51 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
     print("Unable to retrieve the number of rooms")
 }
+
+class MediaItem {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Movie: MediaItem {
+    var director: String
+    init(name: String, director: String) {
+        self.director = director
+        super.init(name: name)
+    }
+}
+
+class Song: MediaItem {
+    var artist: String
+    init(name: String, artist: String) {
+        self.artist = artist
+        super.init(name: name)
+    }
+}
+
+var library = [
+    Movie(name: "m1", director: "m1_d"),
+    Movie(name: "m2", director: "m2_d"),
+    Song(name:"s1", artist:"s1_d"),
+    Song(name:"s2", artist:"s2_d"),
+]
+
+var movieCount = 0, songCount = 0
+
+for item in library {
+    if item is Movie {
+        movieCount += 1
+    } else if item is Song {
+        songCount += 1
+    }
+    
+    if let movie = item as? Movie {
+        print ("Movie:\(movie.name);dir:\(movie.director)")
+    } else if let song = item as? Song {
+        print ("Song:\(song.name);dir:\(song.artist)")
+    }
+}
+print(movieCount, songCount)
+
