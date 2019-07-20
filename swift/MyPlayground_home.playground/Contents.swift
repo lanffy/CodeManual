@@ -437,7 +437,6 @@ struct Location2 {
     
     init(coordinateString: String) {
         let coordinateArr = coordinateString.split(separator: ",")
-        
         let first = coordinateArr[0]
         let second = coordinateArr[1]
         latitude = Double(first)!
@@ -447,6 +446,18 @@ struct Location2 {
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
+    }
+    
+    func printLocation() {
+        print("The Location:\(self.latitude).\(self.longitude)")
+    }
+    
+    func isNorth() -> Bool {
+        return self.latitude > 0
+    }
+    
+    func isSouth() -> Bool {
+        return !self.isNorth()
     }
 }
 
@@ -462,3 +473,54 @@ print(home)
 
 var com: Location2 = Location2(latitude: 1.1, longitude: 2.2)
 print(com)
+
+// 结构体是一种值类型,复制的时候拷贝，而不是引用传递
+// 枚举类型也是值类型
+struct Point {
+    var x = 0.0
+    var y = 0.0
+}
+var p1 = Point(x:1.0, y:2.0)
+print(p1.x)
+
+var p2 = p1
+p2.x = 2.0
+print(p2.x)
+
+
+class Person {
+    var firstName: String
+    var lastName: String
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    init?(fullName: String) {
+        let spaceIndex = fullName.split(separator: " ")
+        if spaceIndex.count < 2 {
+            return nil
+        }
+        let f = spaceIndex[0]
+        let l = spaceIndex[1]
+        if f.isEmpty || l.isEmpty {
+            return nil
+        }
+        self.firstName = String(f)
+        self.lastName = String(l)
+    }
+    
+    func fullName() {
+        print("Name:\(self.lastName) \(self.firstName)")
+    }
+}
+
+var person1 = Person(firstName: "a", lastName: "b")
+var person2 = Person(fullName: "a b")
+var person3 = Person(fullName: "a")
+
+person1.fullName()
+person2?.fullName()
+person3?.fullName()
+
