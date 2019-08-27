@@ -1,2 +1,1 @@
-*/1 * * * * echo 1 >> /Users/rlanffy/Documents/githubPro/phpmanual/python/ditector.log
-*/1 * * * * python /Users/rlanffy/Documents/githubPro/phpmanual/python/ditector.py >> /Users/rlanffy/Documents/githubPro/phpmanual/python/ditector.log
+*/1 09-17 * * * python /Users/rlanffy/Documents/githubPro/phpmanual/python/ditector.py >> /Users/rlanffy/Documents/githubPro/phpmanual/python/ditector.log

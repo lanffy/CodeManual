@@ -29,7 +29,7 @@ headers = {
     'token': '9UCTCTZ74IE7TJ6QWQB5KEOCQFXQBEAB',
 }
 
-def check(idc):
+def check(idc,t):
     p = {
         'IDCard': idc
     }
@@ -39,14 +39,16 @@ def check(idc):
         data = r['Data']
         data = json.loads(data)
         if data['flag']:
-            print idc + ';SUCCESS' + ';msg:' + data['status']
+            print t + ':' + idc + ';SUCCESS' + ';msg:' + data['status']
         else:
-            print idc + '; FAILED' + ';msg:' + data['status']
+            print t + ':' + idc + '; FAILED' + ';msg:' + data['status']
     else:
         print r
 
+t = str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
 for idc in ics:
-    check(idc)
+    check(idc, t)
     sleep(0.5)
 
 
